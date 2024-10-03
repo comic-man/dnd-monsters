@@ -6,7 +6,7 @@ import { routes } from './app.routes';
 import {ApolloClient, ApolloClientOptions, HttpLink, InMemoryCache} from '@apollo/client';
 import {HttpClient} from '@angular/common/http';
 
-const uri = 'https://www.dnd5eapi.co/api/monsters'; // Replace with the GraphQL endpoint
+const uri = 'https://www.dnd5eapi.co/graphql' ; // Replace with the GraphQL endpoint
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
