@@ -1,10 +1,12 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { NgModule } from '@angular/core';
+
 
 import { routes } from './app.routes';
-import {ApolloClient, ApolloClientOptions, HttpLink, InMemoryCache} from '@apollo/client';
-import {HttpClient} from '@angular/common/http';
+import {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';
+import { HttpLink } from 'apollo-angular/http';
+import { provideHttpClient} from '@angular/common/http';
+import {APOLLO_OPTIONS} from 'apollo-angular';
 
 const uri = 'https://www.dnd5eapi.co/graphql' ; // Replace with the GraphQL endpoint
 
@@ -15,13 +17,13 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     cache: new InMemoryCache(),
   };
 }
-@NgModule({
-  imports: [
-    HttpClient,
-    ApolloClient
-  ],
 
-})
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)],
+export  const appConfig: ApplicationConfig = { providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(),
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: createApollo,
+      deps: [HttpLink],
+    }],
 };

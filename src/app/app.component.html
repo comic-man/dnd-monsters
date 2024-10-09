@@ -9,10 +9,14 @@
 <body>
 <div class="container">
   <h1>Monster Search</h1>
-  <input type="text" [(ngModel)]="monsterName" placeholder="Enter a monster name" />
-  <button (click)="searchMonster()">Search</button>
+  <input type="text" [(ngModel)]="monsterIndex" placeholder="Enter a monster name" />
+  <button (click)="searchMonster(monsterIndex)">Search</button>
 
-  <div [innerHTML]="monsterResult" class="monster-result"></div>
+  <div *ngIf="monster">
+    <h2>{{ monster.name }}</h2>
+    <p><strong>Challenge Rating:</strong> {{ monster.challenge_rating }}</p>
+    <p><strong>Hit Points:</strong> {{ monster.hit_points }}</p>
+  </div>
 </div>
 
 </body>
