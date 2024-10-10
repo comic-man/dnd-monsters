@@ -27,3 +27,4 @@ export  const appConfig: ApplicationConfig = { providers: [provideZoneChangeDete
       deps: [HttpLink],
     }],
 };
+

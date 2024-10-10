@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import {CommonModule} from '@angular/common';
 import {MonsterService} from './monster.service';
@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule,],
+  imports: [RouterOutlet, RouterLink, CommonModule, FormsModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -59,21 +59,6 @@ export class AppComponent implements OnInit {
       query Monster($index: String) {
         monster(index: $index) {
           name
-          challenge_rating
-          hit_points
-          alignment
-          charisma
-          constitution
-          damage_immunities
-          damage_resistances
-          damage_vulnerabilities
-          desc
-          dexterity
-          hit_dice
-          hit_points_roll
-          image
-          index
-          intelligence
         }
       }
     `;
