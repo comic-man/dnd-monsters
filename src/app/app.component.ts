@@ -1,14 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import { RouterLinkActive, RouterOutlet} from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import {CommonModule} from '@angular/common';
 import {MonsterService} from './monster.service';
 import {FormsModule} from '@angular/forms';
 
+import {RoutingComponent} from './routing/routing.component';
+import {MonsterSearchComponent} from './monster-search/monster-search.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule, FormsModule,],
+  imports: [RouterOutlet, RouterLinkActive, CommonModule, FormsModule,RoutingComponent, MonsterSearchComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
